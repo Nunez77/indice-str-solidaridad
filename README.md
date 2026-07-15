@@ -27,13 +27,27 @@ columna `penetracion_pct` existe en las salidas y está deliberadamente vacía: 
 | Indicador | Valor |
 |---|---|
 | Uso temporal agregado, Playa del Carmen | **10.82%** |
-| AGEB de Playa del Carmen sobre el umbral de 8% | **59 de 147** con dato censal |
 | Uso temporal agregado, Puerto Aventuras | **13.07%** |
+| Concentración por AGEB (Playa del Carmen) | mediana 4.9%; la mitad de las AGEB por debajo de 5%; P90 cerca de 30%; unas pocas zonas por encima de 70% |
 | AGEB urbanas totales en Solidaridad | 175 (156 rankeables, 19 reservadas) |
 
-El **8%** es el umbral de referencia que el Ayuntamiento de Málaga (2024-2025) usó
-para cerrar barrios a nueva vivienda turística. Se cita como contexto internacional,
-**no como norma local**: en Quintana Roo no existe hoy una norma equivalente.
+El fenómeno se **concentra**, no es un municipio uniformemente saturado: una mayoría
+de AGEB de baja intensidad y un grupo reducido de zonas muy concentradas (Centro,
+Zazil Ha, Gonzalo Guerrero, El Cielo, Playacar). El mapa se lee como una escala
+secuencial de intensidad, no como un semáforo. La distribución completa por decil
+está en `output/ageb_solidaridad.csv`.
+
+**Contexto del umbral de Málaga.** El Ayuntamiento de Málaga (2024-2025) usó el 8%
+del parque residencial por barrio como criterio para cerrar barrios a nueva vivienda
+turística. Medido contra esa referencia, 59 de las 147 AGEB de Playa del Carmen con
+dato censal superan el 8%. Es contexto internacional, **no norma local**: en Quintana
+Roo no existe hoy una norma equivalente, y una AGEB no es un barrio.
+
+**Base pequeña.** Algunas AGEB con muy pocas viviendas muestran proporciones extremas
+que son exactas pero no admiten lectura de tendencia (p. ej. una AGEB de 40 viviendas
+al 100%). No se excluyen del dato; en el mapa publicado se marcan aparte (menos de 60
+viviendas) y el agregado no depende de ellas (moverlas cambia el resultado en 0.05
+puntos).
 
 ## Cifras censales usadas en la proyección 2010→2026
 
@@ -71,7 +85,7 @@ Cuatro scripts de Python sobre fuentes públicas y gratuitas, sin credenciales:
 |---|---|---|
 | `scripts/01_denominador.py` | Denominador censal por AGEB, filtro de municipio y manejo de confidencialidad | `output/denominador_solidaridad.csv` |
 | `scripts/02_returq_catalogo.py` | Levanta el conteo del Catálogo Oficial público de prestadores (SITUR-Q) | conteo agregado (ver nota) |
-| `scripts/03_tabla_y_mapa.py` | Une con los polígonos del Marco Geoestadístico, calcula el semáforo, genera tabla, GeoJSON y mapa interactivo | `output/ageb_solidaridad.csv`, `.geojson`, `mapa.html` |
+| `scripts/03_tabla_y_mapa.py` | Une con los polígonos del Marco Geoestadístico, clasifica cada AGEB respecto al umbral de referencia y genera tabla, GeoJSON y mapa | `output/ageb_solidaridad.csv`, `.geojson`, `mapa.html` |
 | `scripts/04_colonias.py` | Colonia aproximada por geocodificación inversa del centroide (Nominatim) | `output/top_ageb_con_colonia.csv` |
 
 > Nota sobre `02`: el Catálogo Oficial público es, por mandato del artículo 52 Nonies
@@ -98,7 +112,7 @@ En `output/` se incluyen las salidas agregadas por AGEB (datos censales derivado
 sin información personal):
 
 - `denominador_solidaridad.csv` - denominador censal por AGEB con marcas de confidencialidad
-- `ageb_solidaridad.csv` - tabla final por AGEB con porcentaje y semáforo
+- `ageb_solidaridad.csv` - tabla final por AGEB con porcentaje y clasificación por umbral
 - `ageb_solidaridad.geojson` - lo mismo, con los polígonos, para reproducir el mapa
 - `top_ageb_con_colonia.csv` - top 10 y franja 6-8% con colonia aproximada
 
