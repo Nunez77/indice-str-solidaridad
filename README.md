@@ -5,8 +5,8 @@ temporal** sobre el parque residencial total, AGEB por AGEB, en el municipio de
 Solidaridad (Playa del Carmen y Puerto Aventuras), con datos del Censo de Población
 y Vivienda 2020 del INEGI.
 
-Es la metodología completa detrás del artículo *"Medir a tiempo: Playa del Carmen
-estrena su primer índice de vivienda de uso temporal por zona"*, publicado en
+Es la metodología completa detrás del artículo *"Medir a tiempo: elaboramos el primer
+índice de vivienda de uso temporal por zona de Playa del Carmen"*, publicado en
 Riviera Maya Economic Pulse. Cualquier persona puede correr estos scripts sobre las
 fuentes públicas citadas y llegar exactamente al mismo número.
 
